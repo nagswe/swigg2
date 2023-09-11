@@ -1,0 +1,128 @@
+- hosts: all
+  tasks:
+  - name: install httpd package
+    yum:
+      name: httpd
+      state: present
+  - name: copy index.html
+    copy:
+      src: index.html
+      dest: /var/www/html/
+  - name: start httpd server
+    service:
+      name: httpd
+      state: restarted
+
+
+
+
+---
+- hosts: all
+  become: yes
+  tasks:
+    -name: install git
+     raw: yum install git -y
+
+
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: installing pandas
+      pip:
+        name: pandas
+
+
+---
+- hosts: all
+  baecome: yes
+  tasks:
+    - name: installing pandas
+      file:
+        path: "nagesh.txt"
+        state: touch
+
+
+
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: inserting content
+      copy:
+        dest: "nagesh.txt"
+        content:
+           hi all
+           good morning
+           welcome to my class
+
+
+
+- hosts: all
+  tasks:
+   - name: setting up jenkins repo
+     yum_repository:
+       name: jenkins
+       description: Jenkins-stable
+       baseurl: https://pkg.jenkins.io/redhat-stable
+       gpgcheck: 0
+
+   - name: downloading jenkins key
+     rpm_key:
+       key: https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+       state: present
+
+   - name: updating yum
+     yum:
+       name: yum
+       state: latest
+
+   - name: installing openjdk software
+     yum:
+       name: "java-1.8.0-openjdk-devel"
+       state: present
+       
+       
+   - name: installing jenkins software   #it takes some time while downloading jenkins be Subtle
+     yum:
+       name: jenkins
+       state: present
+
+   - name: start the service
+     service:
+       name: jenkins
+       state: started
+
+
+
+
+---
+- hosts: dev
+  become: yes
+  tasks:
+    - name: installing httpd
+      command: yum install httpd -y
+
+    - name: starting httpd
+      command: systemctl start httpd
+
+    - name: creating index.html
+      file:
+        path: "/var/www/html/index.html"
+        state: touch
+
+    - name: inserting the content
+      copy:
+       dest: "/var/www/html/index.html"
+       content: |
+          this is my swiggy application deployed by nagesh using ansible tool and apache webserver
+
+    ---
+    - hosts: dev
+      become: yes
+      gather facts: false
+      tasks:
+         - debug:
+             msg: "the ansible os family is: {{ansible_os_family}} the machine id is: {{ansible_machine_id}} and the domain is {{ansible_domain}}"
+  
+     ansible -m setup dev[0]

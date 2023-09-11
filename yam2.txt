@@ -1,0 +1,50 @@
+vim creds
+username = nagesh
+password = Nagesh123@
+cat creds
+rm -rf creds
+ansible-vault create creds
+cat creds
+ansible-vault edit creds
+ansible-vault decrypt creds
+cat creds
+ansible-vault encrypt creds
+password change ansible-vault rekey creds
+rm -rf *
+roles concept
+mkdir -p playbooks/roles/
+sudo yum install tree -y
+tree
+cd playbooks/
+create file vi master.yml
+---
+- hosts: dev
+   become: yes
+save and quit
+mkdir -p roles/git/tasks
+mkdir -p roles/httpd/tasks
+mkdir -p roles/docker/tasks
+tree
+vim roles/docker/tasks/main.yml
+file copy
+vim roles/git/tasks/main.yml
+file copy
+vim roles/httpd/tasks/main.yml
+copy
+tree
+vim master.yml
+save and wq
+ansible all -ba "yum remove httpd -y"
+ansible all -ba "yum remove git -y"
+ansible-playbook master.yml
+rm -rf *
+cd -
+rm -rf *
+vi nagesh.yml
+code copy
+save and quit
+ansible all -ba "yum remove docker git -y"
+ansible-playbook nagesh.yml --tags a,b
+ansible all -ba "yum remove docker git java-1.8.0-openjdk maven -y"
+ansible-playbook nagesh.yml --skip-tags "c"
+ansible all -ba "mvn --version"
