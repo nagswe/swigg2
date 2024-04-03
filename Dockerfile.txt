@@ -1,0 +1,27 @@
+yum install docker -y
+service docker start
+docker info
+cd /var/lib/docker
+docker images
+docker images ls
+docker ps
+docker ps -a
+docker pull nginx
+docker images
+docker inspect imageid
+docker run -itd --name container1 -p 40:80 imageid
+docker ps
+docker login
+create repository in docker hub
+docker tag nginx:latest nageshswe/nginx:jenkins
+docker ps
+docker exec -it container id or container name /bin/bash
+ls
+and copy public ip and check browser with given port number
+exit
+docker stop container id
+docker ps
+docker ps -a
+docker rm container name
+
+
