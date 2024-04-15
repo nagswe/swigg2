@@ -1,0 +1,19 @@
+docker pull ubuntu
+docker volume create nagesh
+docker volume ls
+docker volume inspect nagesh
+cd /var/lib/docker/volumes/nagesh/_data/
+touch aws{1..5}
+vi aws1
+cd
+docker run -it --name cont1 --mount source=nagesh,destination=/abc ubuntu
+docker volume create agt1
+docker volume create agt1
+docker volume create agt1
+docker volume prune
+cd /home/ec2-user/
+docker run -it --name cont3 -v /home/ec2-user/:/hostvolume ubuntu
+
+docker pull jenkins/jenkins:lts
+docker run -p 8080:8080 -p 50000:50000 jenkins/jenkins:lts
+docker inspect | grep -i ip
