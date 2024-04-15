@@ -1,0 +1,32 @@
+FROM ubuntu
+RUN apt update -y
+RUN apt install git default-jre default-jdk tree -y
+RUN touch abc{1..3}
+WORKDIR /tmp
+copy abc* /tmp/
+ADD https://dlcdn.apache.org/maven/maven-3/3.9.6/binaries/apache- maven-3.9.6-bin.zip /tmp/
+ENV client swiggy
+LABEL email nageshyedidi20@gmail.com
+docker build -t container2 .
+docker run -it --name nagesh1 container2
+$client
+docker inspect container1
+
+Docker volume
+vi Dockerfile
+FROM ubuntu
+volume ["/abc"]
+docker build -t container4 .
+docker run -it --name nagesh5 container4
+cd abc/
+touch file{1..4}
+cat >file1
+THIS FILE IS FOR VOLUME
+docker run -it --name nagesh6 --volumes-from nagesh5 --privileged=true ubuntu
+touch file{5..8}
+docker start nagesh5
+docker attach nagesh5
+
+
+
+
