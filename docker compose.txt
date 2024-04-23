@@ -1,0 +1,40 @@
+docker compose
+launch instance
+install docker
+curl -SL https://github.com/docker/compose/releases/download/v2.26.1/docker-compose-linux-x86_64 -o /usr/local/bin/docker-compose
+cd /usr/local/bin/
+chmod +x docker-compose
+sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+vim docker-compose.yml
+docker-compose up -d
+docker ps -a
+docker-compose logs
+docker network ls
+docker-compose down
+docker-compose up -d
+docker run -itd --name cont-1 httpd
+docker-compose top
+docker compose start
+docker-compose pause
+docker-compose unpause
+mv docker-compose.yml docker-compose1.yml
+ll
+docker-compose -f docker-compose1.yml up -d
+
+
+version: '3'
+services:
+   webapp1:
+      image: nginx
+      ports:
+         - "8000:80"
+
+    zomato:
+       image: httpd
+       ports:
+          - "8001:80"
+
+    uber:
+      image: httpd
+      ports:
+          -"8002:80"
