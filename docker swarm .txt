@@ -4,6 +4,8 @@ connect to mobaxterm
 use multiexe mode
 install docker in three docker instances
 start docker in three instances
+systemctl start docker.service
+systemctl status docker.service
 and stop multiexec
 this steps in master
 docker swarm init --advertise-addr copy privateip
