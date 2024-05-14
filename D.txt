@@ -1,0 +1,33 @@
+docker pull centos
+docker run -itd --name web1 centos
+docker exec -it web1 /bin/bash
+ping google.com
+vi newfile.txt
+cat newfile.txt
+docker pull ubutu
+docker run -itd --name web2 ubuntu
+docker exec -it web2 /bin/bash
+vi secondfile.txt
+cat
+ping google.com
+exit
+vi Docker file
+FROM : ubuntu:latest
+RUN apt update -y
+RUN apt install net-tools 
+RUN apt install vim
+CMD ["/bin/bash"]
+docker build -t con1 .
+docker run -itd --name con2 con1
+docker exec -it con2 /bin/bash
+exit
+
+FROM ubuntu 
+RUN apt update 
+RUN apt install –y apache2 
+RUN apt install –y apache2-utils 
+RUN apt clean 
+EXPOSE 80
+CMD [“apache2ctl”, “-D”, “FOREGROUND”]
+docker build -t apache_img .
+docker run --name myapache -d -p 60:80 apache_img
