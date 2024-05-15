@@ -31,3 +31,15 @@ EXPOSE 80
 CMD [“apache2ctl”, “-D”, “FOREGROUND”]
 docker build -t apache_img .
 docker run --name myapache -d -p 60:80 apache_img
+sudo usermod -aG docker ubuntu
+vi app.py
+print("Hello world")
+FROM ubuntu:latest
+WORKDIR /app
+COPY . /app
+RUN apt-get update && apt-get install -y python3 python3-pip
+ENV NAME World
+CMD ["python3", "app.py"]
+EXPOSE 8080
+MAINTAINER Nagesh20@gmail.com
+docker build -t helloworld .
