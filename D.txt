@@ -15,10 +15,10 @@ vi Docker file
 FROM : ubuntu:latest
 RUN apt update -y
 RUN apt install net-tools 
-RUN apt install vim
+RUN apt install nano -y
 CMD ["/bin/bash"]
-docker build -t con1 .
-docker run -itd --name con2 con1
+docker build -t custom_ubuntu .
+docker run -itd --name custom_u_web01 custom_ubuntu
 docker exec -it con2 /bin/bash
 exit
 
@@ -31,15 +31,33 @@ EXPOSE 80
 CMD [“apache2ctl”, “-D”, “FOREGROUND”]
 docker build -t apache_img .
 docker run --name myapache -d -p 60:80 apache_img
-sudo usermod -aG docker ubuntu
-vi app.py
-print("Hello world")
-FROM ubuntu:latest
+
+
+apt install default-jre
+java -version
+apt update
+apt install nginx
+systemctl start nginx
+systemctl status nginx
+git clone project
+cd mavenfolder
+apt install maven
+mvn install
+ll
+cd target/
+ls
+mvn spring-boot:run
+copy public ip port 8080
+
+vi Dockerfile
+FROM maven:3.8.4-openjdk-11
 WORKDIR /app
-COPY . /app
-RUN apt-get update && apt-get install -y python3 python3-pip
-ENV NAME World
-CMD ["python3", "app.py"]
-EXPOSE 8080
-MAINTAINER Nagesh20@gmail.com
-docker build -t helloworld .
+COPY pom.xml .
+RUN mvn dependency:go-offline
+COPY src ./src
+RUN mvn package
+CMD ["java","-jar","target/bmi-1.0.jar"]
+EXPOSE 8000
+docker build -t my-mvn-app .
+docker run -itd --name mvn-app-cont03 -p 8080:8000 my-mvn-app:1.0
+docker logs mvn-app-cont03
