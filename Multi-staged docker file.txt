@@ -1,0 +1,20 @@
+Multi-staged docker file
+# stage 1: Build the application
+FROM maven:3.8.4-openjdk-11 AS builder
+WORKDIR /app
+COPY pom.xml .
+RUN mvn dependency:go-offline
+COPY src ./src
+RUN mvn package
+
+# stage 2: Create the production image
+FROM openjdk:11-jre-slim
+WORKDIR /app
+COPY --from=builder /app/target/bmi-1.0.jar .
+EXPOSE 8000
+CMD ["java", "-jar", "bmi-1.0.jar"]
+docker build -t mvn-ms-app .
+docker run -itd --name mvn-ms-app01 -p8080:8000 mvn-ms-app
+docker tag mvn-ms-app:latest swenag/mvn-ms-app:latest
+docker push swenag/mvn-ms-app:latest
+               
