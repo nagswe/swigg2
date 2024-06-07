@@ -1,0 +1,55 @@
+tomcat deploy
+
+sudo apt update
+cd /opt
+sudo wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.89/bin/apache-tomcat-9.0.89.tar.gz
+sudo tar -xvf apache-tomcat-9.0.65.tar.gz
+rm -rf apache-tomcat-9.0.65.tar.gz
+cd apache-tomcat-9.0.89/
+sudo su
+cd bin/
+ll
+java --version
+apt install default-jre
+java --version
+./startup.sh
+./shutdown.sh
+cd ..
+ls
+cd conf/
+ls
+vi server.xml
+connector port 8080 to 8083
+cd ..
+cd bin/
+./startup.sh
+cd ..
+cd conf/
+vi tomcat-users.xml
+<user username="admin" password="admin1234" roles="admin-gui, manager-gui"/>
+sudo vi /opt/apache-tomcat-9.0.89/webapps/manager/META-INF/context.xml
+<!-- valve ending -->
+sudo vi /opt/apache-tomcat-9.0.89/webapps/host-manager/META-INF/context.xml
+<!-- valve ending -->
+sudo ln -s /opt/apache-tomcat-9.0.65/bin/startup.sh /usr/bin/startTomcat
+sudo ln -s /opt/apache-tomcat-9.0.65/bin/shutdown.sh /usr/bin/stopTomcat
+stopTomcat
+
+startTomcat
+
+
+
+apt install maven
+git clone https://github.com/nagswe/Petclinic.git
+cd petclinic/
+ll
+mvn clean install package
+cd target/
+ll
+cp petclinic.war /opt/apache-tomcat-9.0.89/webapps/
+cd /opt/apache-tomcat-9.0.89/webapps/
+copy publicip/petclinic
+
+
+https://www.linkedin.com/pulse/how-run-terraform-script-jenkins-step-by-step-guide-praveen-dandu/
+
