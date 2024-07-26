@@ -1,0 +1,9 @@
+index.html
+<html>
+<h1> This website is hosted using s3 static website by Nagesh </h1>
+</html>
+
+eror.html
+<html>
+<h1> This website is under maintance </h1>
+</html>
