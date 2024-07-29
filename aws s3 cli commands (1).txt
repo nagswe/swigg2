@@ -1,0 +1,102 @@
+To know the versions
+aws s3 --version
+------------------------------------------------------------------------------------------------------------------------
+
+To list buckets
+aws s3 ls
+------------------------------------------------------------------------------------------------------------------------
+
+To make a bucket
+aws s3 mb s3://bucketname
+------------------------------------------------------------------------------------------------------------------------
+
+To make bucket in specific region
+aws s3 mb s3://mybucket --region us-west-1
+------------------------------------------------------------------------------------------------------------------------
+
+To remove a bucket
+aws s3 rb s3://bucketname
+------------------------------------------------------------------------------------------------------------------------
+
+To list objects in a bucket
+aws s3 ls s3://bucketname
+------------------------------------------------------------------------------------------------------------------------
+
+To copy a specific object into bucket
+aws s3 cp filename s3://bucketname
+------------------------------------------------------------------------------------------------------------------------
+
+To copy all objects into bucket from path
+aws s3 cp /path/ s3://bucketname --recursive
+------------------------------------------------------------------------------------------------------------------------
+
+To copy all objects into bucket from current directory
+aws s3 cp . s3://bucketname --recursive
+------------------------------------------------------------------------------------------------------------------------
+
+To sync all files into bucket with edited content
+aws s3 sync . s3://bucketname
+------------------------------------------------------------------------------------------------------------------------
+
+To copy specific object from one bucket to another bucket
+aws s3 cp s3://sourcebucketccit/hello.txt s3://destinationbucketccit/
+------------------------------------------------------------------------------------------------------------------------
+
+To copy all objects from one bucket to another bucket
+aws s3 cp s3://sourcebucketccit/ s3://destinationbucketccit/ --recursive
+------------------------------------------------------------------------------------------------------------------------
+
+To copy a file from local to s3 as public [Note: The Bucket and ACL shoould be ]
+aws s3 cp syncfile.txt s3://sourcebucketccit --acl public-read
+------------------------------------------------------------------------------------------------------------------------
+
+To move specific object from local to s3
+aws s3 mv file.txt s3://sourcebucketccit
+------------------------------------------------------------------------------------------------------------------------
+
+To move all objects from local to s3
+aws s3 mv . s3://sourcebucketccit --recursive
+------------------------------------------------------------------------------------------------------------------------
+
+To move specific object from one bucket to another s3 bucket
+aws s3 mv s3://sourcebucketccit/wonder.txt s3://destinationbucketccit
+------------------------------------------------------------------------------------------------------------------------
+
+To move all objects from one bucket to another s3 bucket
+aws s3 mv s3://sourcebucketccit/ s3://destinationbucketccit --recursive
+------------------------------------------------------------------------------------------------------------------------
+
+To remove all objects from a bucket
+aws s3 rm s3://sourcebucketccit --recursive
+------------------------------------------------------------------------------------------------------------------------
+
+To remove specific object from a bucket
+aws s3 rm s3://sourcebucketccit/testfile.txt
+------------------------------------------------------------------------------------------------------------------------
+
+To copy/download all objects from s3 to local
+aws s3 cp s3://sourcebucketccit/ /home/ccit/bucketdata/download/ --recursive
+------------------------------------------------------------------------------------------------------------------------
+
+To copy/download specific object from s3 to local
+aws s3 cp s3://agt62812/EMS 502 (3).jpg /root/aws
+------------------------------------------------------------------------------------------------------------------------
+
+To move specific object from s3 to local
+aws s3 mv s3://sourcebucketccit/testfile3.txt /home/ccit/bucketdata/download
+------------------------------------------------------------------------------------------------------------------------
+
+To move all objects from s3 to local
+aws s3 mv s3://sourcebucketccit /home/ccit/bucketdata/download --recursive
+------------------------------------------------------------------------------------------------------------------------
+
+
+
+aws s3api put-bucket-versioning --bucket agt62812 --versioning-configuration Status=Enabled
+aws s3 presign s3://agt62812/ index.html.txt --expires-in 604800
+aws s3 cp ~/devops s3:// agt56478 --recursive
+aws s3 cp ~/devops s3://agt62812 --recursive
+aws s3 sync s3://agt56478 s3://agt62812
+aws s3 mv s3://agt56478 s3:agt62812 --recursive
+aws s3 cp s3://agt62812/devops1.txt  ~/aws --recursive
+
