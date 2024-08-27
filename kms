@@ -1,0 +1,10 @@
+aws s3 presign s3://DOC-EXAMPLE-BUCKET/test2.txt --expires-in 60
+
+=====
+echo "Agasthya solutions" > file.txt
+aws kms encrypt --key-id alias/xxx --plaintext fileb://file.txt --output text --query CiphertextBlob | base64 --decode > encrypted_file.txt
+ls -la
+cat encrypted_file.txt
+aws kms decrypt --ciphertext-blob fileb://encrypted_file.txt --output text --query Plaintext | base64 --decode > decrypted_file.txt
+ls -la
+cat decrypted_file.txt
