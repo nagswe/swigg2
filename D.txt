@@ -1,3 +1,4 @@
+sudo yum update
 docker pull centos
 docker run -itd --name web1 centos
 docker exec -it web1 /bin/bash
