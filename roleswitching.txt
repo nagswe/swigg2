@@ -1,0 +1,19 @@
+roleswitching
+create role in different account using iam but give master account in aws role
+one is s3 full access
+one is ec2 full access
+
+{
+  "Version": "2012-10-17",
+  "Statement": {
+    "Effect": "Allow",
+    "Action": "sts:AssumeRole",
+    "Resource": [
+    "arn copy", paste different account arn
+    "arn copy"  paste different account arn
+    ]
+  }
+}
+
+
+create inline policy and paste
