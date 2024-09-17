@@ -1,0 +1,81 @@
+Day 01
+
+
+-> It is Reporting tool.
+
+-> Used to Convert the Raw Data To Visual Data
+
+-> It is New Ms Product
+
+-> It is Cloud Server
+
+-> Power BI is a Powerful Components
+
+-> Bi is called as Business Intelligence tool
+
+-> BI is used for Collect Data, Store the Data and Analysis the Data and Create Report
+
+MS -> Power Platform Create
+      -> Power Bi :- Create the Report
+      -> Power Automated :- Connect the Power BI and Power Apps
+      -> Power Apps :- Web apps and Mobile apps :- Create apps 
+
+Zero use
+-> Cost less -> $9.95 -> Pro
+                $20 -> Premium User
+                $4925 -> Premium for Capacity
+-> NO Coding or Zero Coding -> RAW DATA ---> visual Data
+--> Drag and Drop Functions
+--> DAX Function
+
+-> Designed to improve the Self-Service capabilities of older SSRS (SQL Server Reporting Services)
+
+--> SSRS + Excel + Word + ppt
+
+Cloud Services 
+--------------                     Development
+
+1) SAAS :- apps --> Rent pay Use   Vendor
+2) IAAS :- Rent VM ,  VN , Server  Vendor + Owner
+3) PAAS :- Create Own apps         Owner
+
+Min Components of Power BI 
+--------------------------
+1) Power BI Desktop :-
+               Local Machine :- Laptop, PC Install
+               Collect and Connect Data , Transform Data, Create Report And Publish
+               Free , MS Store  
+       Publish :- Send the report from Power Bi Desktop to Power Bi Service
+
+2) Power BI Service
+             --> Web Version
+             --> Web (app.powerbi.com)
+             --> UserName And Pass
+             --> Free 60 Days, Pro ($9.99) , Premium ($20, $4925)
+             --> Create the Light Reports
+             --> Create and Managed the Contents ( Report and Dashboard)
+             --> Share the Content for end Users
+             app.powerbi.com
+         
+
+
+
+3) Power BI Mobile Apps :- only Read the Content (Report & Dashboard) --> NO Development
+4) Power BI Report Builders Or Paginated Reports :- Avoid the Scorebar
+        --> Print and share the all data
+        --> One pager Reports
+        ---> Create Bank Statement and Insurance Bills, Create Sales Invoice.
+        ---> Power Bi Desktop
+5) Power BI Embed :- Generate the URL of the Content
+
+
+-----------------------Sub Components of Power BI--------
+Power Query
+Power pivot
+Power View
+Power Map
+Power BI Desktop
+Power BI Web
+Power BI Pricing
+Power BI Mobile apps
+arrangements
