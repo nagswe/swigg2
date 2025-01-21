@@ -1,0 +1,44 @@
+ps aux
+ps -ef
+docker pull ubuntu
+docker run -itd --name ubuntu03 ubuntu
+docker start ubuntu03 or containerid
+docker ps
+docker exec -it ubuntu03 /bin/bash
+ps -ef
+exit
+docker ps
+docker attach ubuntu03 
+ps -ef
+docker ps
+exit
+docker ps -a
+docker inspect containername
+docker image ls
+docker image inspect imagename
+docker network ls
+docker network inspect bridge
+docker stop containerid
+docker ps -a -q
+docker start $(docker ps -a -q)
+docker stop $(docker ps -a -q)
+docker rm $(docker ps -a -q)
+vm1 - ipaddress 192.168.1.1
+webserver -- nginx/lis/apache tomcat -port
+db server ---> Microsoft sql/MySQL/oracle db/postgress
+docker server ---> docker application
+docker inspect ubuntu01 | grep -i "ipaddress"
+ifconfig
+docker stop container
+ifconfig
+docker start container
+docker network ls
+docker inspect web01 | grep -i "ipaddress"
+docker pull httpd
+docker run -itd --name httpd01 -p9090:80 httpd
+docker inspect httpd01 | grep -i "ipaddress"
+docker inspect httpd01
+docker run -d -p 8080:80 --name web01 nginx
+docker run -d -p 9090:80 --name httpd01 httpd
+docker run -d -p 1010:1433 --name mysql01 mysql
+docker info
