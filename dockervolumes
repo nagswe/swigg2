@@ -1,0 +1,23 @@
+docker volume create new_vol01
+docker volume inspect new_vol01
+docker run -itd --name newsrv01 -v new_vol01:/new_folder centos
+docker exec -it newsrv01 /bin/bash
+docker volume ls
+docker run -itd --name newsrv02 -v new_vol01:/new_folder centos
+docker run -itd --name newsrv03 --volumes-from newsrv01  centos
+docker run -itd --name newsrv04 --volumes-from newsrv01:ro  centos
+env
+cd env:
+dir
+export DB_SERVER=mysql01
+export DB_USER=admin
+export DB_NAME=test
+export DB_PASSWD=pass123
+mysql://DB_SERVER/user=DB_USER/pass=DB_PASS/dbname-D_NAME
+docker run -itd --name newsrv05 --env DB_SERVER=mysql01 --env DB_USER=admin --env DB_NAME=test --env DB_PASSWD=pass123 centos
+vi env_variable.txt
+DB_SERVER=mysql01
+DB_USER=admin
+DB_NAME=test
+DB_PASSWD=pass123
+docker run -itd --name newsrv06 --env-file env_variable.txt centos
