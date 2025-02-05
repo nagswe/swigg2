@@ -1,0 +1,114 @@
+JENKINS CLASS DAY1
+
+Create shell
+
+echo "Hello World"
+
+echo "Good morning welcome to class"
+
+mkdir -p aws
+
+echo "Successfully create aws folder using jenkins"
+
+touch file1.txt
+
+echo "Hello World" >file1.txt
+
+cp file file2
+
+cat /proc/cpuinfo
+
+
+scripted pipeline
+
+node {
+stage('stage1') {
+   sh 'echo "hi all good morning"'
+}
+}
+
+pipeline script
+
+SINGLE STAGE:
+
+pipeline {
+    agent any 
+    
+    stages {
+        stage('abc') {
+            steps {
+                echo "hello world"
+            }
+        }
+    }
+}
+
+pipeline {
+    agent any 
+    
+    stages {
+        stage('one') {
+            steps {
+                echo "hello world"
+            }
+        }
+        stage('two') {
+            steps {
+                sh 'touch file1'
+            }
+        }
+        stage('three') {
+            steps {
+                sh 'touch file2'
+            }
+        }
+    }
+}
+
+
+node {
+stage('stage1') {
+   sh 'touch file3'
+   sh 'mkdir dir1'
+   sh 'lscpu'
+}
+}
+
+node {
+stage('stage1') {
+   sh '''
+   touch file22
+   mkdir dir22
+   lscpu
+   '''   
+}
+}
+
+
+
+pipeline {
+    agent any
+    
+    stages {
+        stage('stage1') {
+            steps {
+                echo 'touch file32.txt'
+            }
+        }
+        stage('stage2') {
+            steps {
+                sh 'mkdir devops1'
+            }
+        }
+        stage('stage3') {
+            steps {
+                sh 'echo "hi all done"'
+            }
+        }
+    }
+}
+
+
+
+
+
