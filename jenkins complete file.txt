@@ -1,0 +1,202 @@
+JENKINS CLASS DAY1
+
+Create shell
+
+echo "Hello World"
+
+echo "Good morning welcome to class"
+
+mkdir -p aws
+
+echo "Successfully create aws folder using jenkins"
+
+touch file1.txt
+
+echo "Hello World" >file1.txt
+
+cp file file2
+
+cat /proc/cpuinfo
+
+
+scripted pipeline
+
+node {
+stage('stage1') {
+   sh 'echo "hi all good morning"'
+}
+}
+
+pipeline script
+
+SINGLE STAGE:
+
+pipeline {
+    agent any 
+    
+    stages {
+        stage('abc') {
+            steps {
+                echo "hello world"
+            }
+        }
+    }
+}
+
+pipeline {
+    agent any 
+    
+    stages {
+        stage('one') {
+            steps {
+                echo "hello world"
+            }
+        }
+        stage('two') {
+            steps {
+                sh 'touch file1'
+            }
+        }
+        stage('three') {
+            steps {
+                sh 'touch file2'
+            }
+        }
+    }
+}
+
+
+node {
+stage('stage1') {
+   sh 'touch file3'
+   sh 'mkdir dir1'
+   sh 'lscpu'
+}
+}
+
+node {
+stage('stage1') {
+   sh '''
+   touch file22
+   mkdir dir22
+   lscpu
+   '''   
+}
+}
+
+
+
+pipeline {
+    agent any
+    
+    stages {
+        stage('stage1') {
+            steps {
+                echo 'touch file32.txt'
+            }
+        }
+        stage('stage2') {
+            steps {
+                sh 'mkdir devops1'
+            }
+        }
+        stage('stage3') {
+            steps {
+                sh 'echo "hi all done"'
+            }
+        }
+    }
+}
+
+JENKINS DAY2
+
+JENKINS PARAMETERS
+
+This project is parameterized
+
+choice parameter
+CLIENT
+SWIGGY
+ZOMATO
+UBER
+DES: SELECT THE YOU WANT TO BUILD
+
+choice parameter
+NEW DB
+YES
+NO
+
+choice parameter
+BRANCHES
+MASTER
+RELEASE
+QA
+
+choice parameter
+PRIORITY
+HIGH
+MEDIUM
+LOW
+
+STRING PARAMETER
+
+USER INPUT
+ENTER YOUR INPUT VALUE
+THIS BUILD BY NAGESH
+
+MULTILINE STRING PARAMETER
+MULTILINE LINE INPUT
+ENTER YOUR VALUE IN DES
+
+FILE PARAMETER
+LOCAL FILE
+SELECT THE FILE YOU WANT TO UPLOAD
+
+BOOLEAN PARAMETER
+PRIORITY
+
+VARIABLES 3TYPES
+LOCAL VARIABLES
+EXCUTE SHELL
+name=Nagesh
+location=Hyderabad
+
+echo "hai all good morning ${name} and iam from ${loc}
+
+environment variables
+goto system
+environment variables
+add
+name
+Nagesh
+loc
+hyd
+client
+agt
+
+echo "Iam working ${client}
+
+Jenkins variables
+
+echo "this build iS from ${JOB_NAME}"
+echo "this build iS from ${JOB_NAME}" the build number is {BUILD_ID}" the node used for the build is {NODE_NAME}"
+
+THROTTLE BUILD
+NUMBER OF BILDS 3
+TIME HOUR
+
+CUSTOM WORKSPACE
+Use custom workspace
+/tmp
+mkdir abc
+chown Jenkins:jenkins abc/
+
+
+
+
+
+
+
+
+
+
