@@ -193,10 +193,168 @@ chown Jenkins:jenkins abc/
 
 
 
+post build actions
+
+crontab 
+min (0-59)
+hour (0-23)
+day of month (1-31)
+month (1-12)
+day of week (0-6) (sunday=0 or 7)
+
+10:30am in next sunday
+30 10 6 2 0
+
+11:35pm in next Friday
+35 23 6 2 5
+
+every minute build 
+*/1****
+
+every one hour
+* */1 6 2 1
+
+pollscm when code changed immeadeately will reflect
+*/1 * * * *
+
+webhook within seconds will reflect
+
+go to GitHub
+settings
+create webhook
+copy Jenkins server url
+http://18.171.235.189:8080/github-webhook/
+
+
+day3
+
+master and slave concept
 
 
 
+project1
 
+pipeline {
+    agent {label "agent1"}
+    
+    stages{
+        
+       stage ("Code"){
+          steps{
+             echo "This stage is used to clone the app"
+          }
+           
+       }
+       stage ("Build"){
+          steps{
+             echo "This stage used build the code"
+          }
+       }
+     
+       stage ("Test"){
+          steps{
+              echo "This stage used to test the code"
+          }
+       }
+
+       stage ("Deploy"){
+          steps{
+              echo "This stage is used Deploy the code"
+          }
+       }
+       
+    }
+}
+
+
+
+project2
+
+
+pipeline {
+    agent {label "agent1"}
+    
+    stages{
+        
+       stage ("Code"){
+          steps{
+             echo "This stage is used to clone the app"
+             git url: "https://github.com/nagswe/DJANGOAPP.git", branch: "master"
+          }
+           
+       }
+       stage ("Build"){
+          steps{
+             echo "This stage used build the code"
+             sh "docker build -t djangoapp ."
+          }
+       }
+     
+       stage ("Push to DockerHub"){
+          steps{
+              echo "This stage used to push the docker image to docker hub the code"
+              sh "docker login -u nageshswe -p Nagswe@123
+              sh "docker image tag django:latest nageshswe/djangoapp:tagname
+              sh "docker push nageshswe/djangoapp:tagname"
+          }
+       }
+
+       stage ("Deploy"){
+          steps{
+              echo "This stage is used Deploy the code"
+
+              sh "docker run -d -p 8000:8000 djangoapp"
+          }
+       }
+       
+    }
+}
+
+install docker in agent 
+
+usermod -aG docker $USER && newgrp docker
+
+docker stop container and remove the container
+
+apt install docker-compose
+
+project3
+
+pipeline{
+    agent { label 'agent1' }
+    
+    stages{
+        stage("Code Clone"){
+            steps{
+                echo "Code Clone Stage"
+                git url: "https://github.com/nagswe/TODOAPP.git", branch: "master"
+            }
+        }
+        stage("Code Build & Test"){
+            steps{
+                echo "Code Build Stage"
+                sh "docker build -t TODOAPP ."
+            }
+        }
+        stage("Push To DockerHub"){
+            steps{
+                withCredentials([usernamePassword(
+                    credentialsId:"dockerhubcred",
+                    usernameVariable:"dockerHubUser", 
+                    passwordVariable:"dockerHubPass")]){
+                sh 'echo $dockerHubPass | docker login -u $dockerHubUser --password-stdin'
+                sh "docker image tag TODOAPP:latest ${env.dockerHubUser}/nageshswe/todoapp:tagname"
+                sh "docker push ${env.dockerHubUser}/nageshswe/todoapp:tagname"
+                }
+            }
+        }
+        stage("Deploy"){
+            steps{
+                sh "docker compose down && docker compose up -d --build"
+            }
+        }
+    }
+}
 
 
 
